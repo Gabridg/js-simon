@@ -43,7 +43,7 @@ const numberContainer = document.getElementById('number-container');
 
 //MS 2:
 const timer = document.getElementById('timer');
-let seconds = 10;
+let seconds = 1;
 
 timer.innerText = seconds;
 let message = '';
@@ -52,24 +52,31 @@ const countdown = setInterval(function () {
     timer.innerText = --seconds;
     if (seconds === 0) {
         number.innerText = '';
-        let userChoice = parseInt(prompt(`inserisci i numeri`));
-        console.log(userChoice);
-        if (userChoice === cpuNumber) {
-
+        for (let i = 1; i <= 5; i++) {
+            let userChoice = parseInt(prompt('inserisci il numero :'));
+            console.log(userChoice);
+            userNumber.push(userChoice);
+            console.log("Numeri Scelti dall'utente", userNumber);
+        }
+        if (userNumber === cpuNumber) {
+            message = alert('Hai vinto!!');
         }
         clearInterval(countdown);
     }
 }, 1000)
 
 // MS 3:
+
+const userNumber = [];
 const cpuNumber = [];
 
-while (cpuNumber.length <= 5) {
+while (cpuNumber.length < 5) {
     let randomNumber = getRandomNumber();
     if (!cpuNumber.includes(randomNumber)) {
         cpuNumber.push(randomNumber);
     }
 }
 console.log(cpuNumber);
+
 
 number.innerText = cpuNumber;
