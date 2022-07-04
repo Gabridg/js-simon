@@ -43,7 +43,7 @@ const numberContainer = document.getElementById('number-container');
 
 //MS 2:
 const timer = document.getElementById('timer');
-let seconds = 1;
+let seconds = 10;
 
 timer.innerText = seconds;
 let message = '';
