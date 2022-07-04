@@ -23,32 +23,47 @@ chiedere all'utente tramite prompt quali erano i 5 numeri allo scadere dei 30sec
 MILESTONE 3:
 vedere se i numeri inseriti dall'utente sono i numeri estratti casualmente.
 controllare quali numeri sono stati indovinati e quanti numeri.
+` 
 */
 
 // FUNZIONI 
-function createCells() {
-    const cell = document.createElement('div');
-    cell.classList = 'numero-casuale';
-    cell.innerText = randomNumber;
-
+function getRandomNumber(min = 1, max = 100) {
+    let randomNumber = Math.floor(Math.random() * (max - min)) + min;
     return randomNumber;
 }
+
+
+const number = document.getElementById('number');
+
+
 
 // DOM
 const numberContainer = document.getElementById('number-container');
 
-// MS
-let randomNumber = Math.floor(Math.random() * (100 - 1)) + 1
-
-const totalNumber = 5;
-
-for (let i = 1; i <= totalNumber; i++) {
-
-    const numberBox = createCells();
-
-    numberContainer.innerHTML = numberBox;
-
-}
 
 //MS 2:
+const timer = document.getElementById('timer');
+let seconds = 10;
 
+timer.innerText = seconds;
+
+const countdown = setInterval(function () {
+    timer.innerText = --seconds;
+    if (seconds === 0) {
+        let userChoice = parseInt(prompt(`inserisci il numero`));
+        clearInterval(countdown);
+    }
+}, 1000)
+
+// MS 3:
+const cpuNumber = [];
+
+while (cpuNumber.length <= 5) {
+    let randomNumber = getRandomNumber();
+    if (!cpuNumber.includes(randomNumber)) {
+        cpuNumber.push(randomNumber);
+    }
+}
+console.log(cpuNumber);
+
+number.innerText = cpuNumber;
