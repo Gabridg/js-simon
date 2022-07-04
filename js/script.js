@@ -46,11 +46,17 @@ const timer = document.getElementById('timer');
 let seconds = 10;
 
 timer.innerText = seconds;
+let message = '';
 
 const countdown = setInterval(function () {
     timer.innerText = --seconds;
     if (seconds === 0) {
-        let userChoice = parseInt(prompt(`inserisci il numero`));
+        number.innerText = '';
+        let userChoice = parseInt(prompt(`inserisci i numeri`));
+        console.log(userChoice);
+        if (userChoice === cpuNumber) {
+
+        }
         clearInterval(countdown);
     }
 }, 1000)
