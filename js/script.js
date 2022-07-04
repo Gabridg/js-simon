@@ -26,21 +26,29 @@ controllare quali numeri sono stati indovinati e quanti numeri.
 */
 
 // FUNZIONI 
-function getRandomNumber(min = 1, max = 100) {
-    let randomNumber = Math.floor(Math.random() * (max - min)) + min;
+function createCells() {
+    const cell = document.createElement('div');
+    cell.classList = 'numero-casuale';
+    cell.innerText = randomNumber;
+
     return randomNumber;
 }
 
 // DOM
-const numberOne = document.getElementById('number-one');
-const numberTwo = document.getElementById('number-two');
-const numberThree = document.getElementById('number-three');
-const numberFour = document.getElementById('number-four');
-const numberFive = document.getElementById('number-five');
+const numberContainer = document.getElementById('number-container');
 
-// MS 1:
-numberOne.innerText = getRandomNumber();
-numberTwo.innerText = getRandomNumber();
-numberThree.innerText = getRandomNumber();
-numberFour.innerText = getRandomNumber();
-numberFive.innerText = getRandomNumber();
+// MS
+let randomNumber = Math.floor(Math.random() * (100 - 1)) + 1
+
+const totalNumber = 5;
+
+for (let i = 1; i <= totalNumber; i++) {
+
+    const numberBox = createCells();
+
+    numberContainer.innerHTML = numberBox;
+
+}
+
+//MS 2:
+
