@@ -1,0 +1,30 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.numero-casuale {
+    font-weight: bold;
+    font-size: 100px;
+    color: #f00;
+    width: calc(100% / 5);
+}
+
+#timer {
+    font-weight: bold;
+    font-size: 200px;
+    text-align: center;
+}

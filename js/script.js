@@ -24,3 +24,23 @@ MILESTONE 3:
 vedere se i numeri inseriti dall'utente sono i numeri estratti casualmente.
 controllare quali numeri sono stati indovinati e quanti numeri.
 */
+
+// FUNZIONI 
+function getRandomNumber(min = 1, max = 100) {
+    let randomNumber = Math.floor(Math.random() * (max - min)) + min;
+    return randomNumber;
+}
+
+// DOM
+const numberOne = document.getElementById('number-one');
+const numberTwo = document.getElementById('number-two');
+const numberThree = document.getElementById('number-three');
+const numberFour = document.getElementById('number-four');
+const numberFive = document.getElementById('number-five');
+
+// MS 1:
+numberOne.innerText = getRandomNumber();
+numberTwo.innerText = getRandomNumber();
+numberThree.innerText = getRandomNumber();
+numberFour.innerText = getRandomNumber();
+numberFive.innerText = getRandomNumber();
