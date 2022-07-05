@@ -37,13 +37,23 @@ function getRandomNumber(min = 1, max = 100) {
     }
     return cpuNumber;
 }
+
+function getUserNumber(min = 1, max = 100) {
+    let userChoice;
+    while (isNaN(userChoice) || userChoice < min || userChoice > max) {
+        userChoice = parseInt(prompt(`Inserisci un numero tra ${min} e ${max}`));
+    }
+
+    return userChoice;
+}
+
 const timer = document.getElementById('timer');
 const numberContainer = document.getElementById('number-container');
 
 min = 1;
 max = 100;
 const totalNumber = 5;
-let seconds = 10;
+let seconds = 1;
 timer.innerText = seconds;
 let message = '';
 
@@ -62,17 +72,24 @@ for (let i = 0; i < totalNumber; i++) {
 const countdown = setInterval(function () {
     timer.innerText = --seconds;
     if (seconds === 0) {
-        number.innerText = '';
-        for (let i = 1; i <= 5; i++) {
-            let userChoice = parseInt(prompt('inserisci il numero :'));
-            console.log(userChoice);
-            userNumber.push(userChoice);
-            console.log("Numeri Scelti dall'utente", userNumber);
-        }
+        numberContainer.innerText = '';
         clearInterval(countdown);
     }
 }, 1000)
 
-const userNumber = [];
 
+setTimeout(() => {
 
+    const userNumber = [];
+    while (userNumber.length < totalNumber) {
+        const userChoice = getUserNumber();
+        if (!userNumber.includes(userChoice)) userNumber.push(userChoice)
+    }
+    console.log(userNumber);
+    let correctNumber = []
+    for (let i = 0; i < totalNumber; i++) {
+        if (number.includes(userNumber[i])) correctNumber.push(userNumber[i]);
+    }
+
+    alert('Hai totalizzato il punteggio di: ' + correctNumber.length + ' e hai indovinato questi numeri: ' + correctNumber);
+}, 1200)
