@@ -28,26 +28,37 @@ controllare quali numeri sono stati indovinati e quanti numeri.
 
 // FUNZIONI 
 function getRandomNumber(min = 1, max = 100) {
-    let randomNumber = Math.floor(Math.random() * (max - min)) + min;
-    return randomNumber;
+    const cpuNumber = [];
+    while (cpuNumber.length < totalNumber) {
+        let randomNumber = Math.floor(Math.random() * (max + 1 - min)) + min;
+        if (!cpuNumber.includes(randomNumber)) {
+            cpuNumber.push(randomNumber);
+        }
+    }
+    return cpuNumber;
 }
-
-
-const number = document.getElementById('number');
-
-
-
-// DOM
+const timer = document.getElementById('timer');
 const numberContainer = document.getElementById('number-container');
 
-
-//MS 2:
-const timer = document.getElementById('timer');
+min = 1;
+max = 100;
+const totalNumber = 5;
 let seconds = 10;
-
 timer.innerText = seconds;
 let message = '';
 
+const number = getRandomNumber(min, max, totalNumber);
+console.log(number);
+
+let items = '';
+
+for (let i = 0; i < totalNumber; i++) {
+    items += `<li> ${number[i]}</li>`;
+
+    numberContainer.innerHTML = items;
+}
+
+// MS 3:
 const countdown = setInterval(function () {
     timer.innerText = --seconds;
     if (seconds === 0) {
@@ -58,25 +69,10 @@ const countdown = setInterval(function () {
             userNumber.push(userChoice);
             console.log("Numeri Scelti dall'utente", userNumber);
         }
-        if (userNumber === cpuNumber) {
-            message = alert('Hai vinto!!');
-        }
         clearInterval(countdown);
     }
 }, 1000)
 
-// MS 3:
-
 const userNumber = [];
-const cpuNumber = [];
-
-while (cpuNumber.length < 5) {
-    let randomNumber = getRandomNumber();
-    if (!cpuNumber.includes(randomNumber)) {
-        cpuNumber.push(randomNumber);
-    }
-}
-console.log(cpuNumber);
 
 
-number.innerText = cpuNumber;
